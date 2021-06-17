@@ -1,7 +1,13 @@
+import Controls from "./Controls";
+import Cards from "./Cards";
+import { useState } from "react";
+
 function App() {
+  const [image, setImage] = useState("Hi");
   return (
     <div>
-      <h1>Starter test</h1>
+      <Controls setImage={setImage} />
+      <Cards image={image} />
     </div>
   );
 }
