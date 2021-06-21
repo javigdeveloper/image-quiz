@@ -3,11 +3,11 @@ import Cards from "./Cards";
 import { useState } from "react";
 
 function App() {
-  const [image, setImage] = useState("Hi");
+  const [imageText, setImageText] = useState([]);
   return (
     <div>
-      <Controls setImage={setImage} />
-      <Cards image={image} />
+      <Controls setImageText={setImageText} />
+      <Cards imageText={imageText} />
     </div>
   );
 }

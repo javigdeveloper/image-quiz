@@ -1,1 +1,9 @@
-
+.card {
+  margin: 20px;
+}
+select {
+  font-size: large;
+}
+option {
+  font-size: large;
+}
