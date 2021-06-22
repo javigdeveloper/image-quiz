@@ -8,13 +8,10 @@ const Controls = ({ setImageText }) => {
     const url = `https://pixabay.com/api/?key=${process.env.REACT_APP_API_KEY}&q=${myValue}&image_type=photo`;
     fetch(url)
       .then((response) => response.json())
-      // .then((json) => setImageText(json.hits[0].largeImageURL));
-      // .then((json) => setImageText(json.hits));
       .then((json) => {
-        console.log(json.hits);
+        console.log("hits is ", json.hits);
         setImageText(json.hits);
       });
-    console.log("url is ", url);
   };
 
   return (
