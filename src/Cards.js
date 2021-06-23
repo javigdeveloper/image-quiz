@@ -1,58 +1,49 @@
-const Cards = ({ imageText, setPreSelected }) => {
+const Cards = ({ picture, setPreSelected, isVisible, inputValues }) => {
   const handleImageClick = (photo, e) => {
-    console.log("photo is ", photo, "event is ", e);
+    // console.log("photo is ", photo, "event is ", e);
+    console.log("clicked photo");
     setPreSelected((prevR) => {
       return [...prevR, photo];
     });
   };
 
-  // return (
-  //   <div>
-  //     <h1>Cards Component</h1>
-  //     {imageText.map((photo) => {
-  //       let tags = photo.tags.split(",");
-  //       // console.log(photo.webformatURL);
-  //       return (
-  //         <div key={photo.id}>
-  //           <div onClick={(e) => handleImageClick(photo, e)}>
-  //             <img src={photo.webformatURL} alt="no data available" />
-  //           </div>
-  //           <div className="options">
-  //             <select>
-  //               <option value={tags[0]}>{tags[0]}</option>
-  //               <option value={tags[1]}>{tags[1]}</option>
-  //               <option value={tags[2]}>{tags[2]}</option>
-  //             </select>
-  //           </div>
-  //         </div>
-  //       );
-  //     })}
-  //   </div>
-  // );
-
-  return (
-    <div>
-      <h1>Cards Component</h1>
-      {imageText.map((photo) => {
-        let tags = photo.tags.split(",");
-        // console.log(photo.webformatURL);
-        return (
-          <div key={photo.id}>
-            <div onClick={(e) => handleImageClick(photo, e)}>
-              <img src={photo.webformatURL} alt="no data available" />
-            </div>
-            <div className="options">
-              <select>
-                <option value={tags[0]}>{tags[0]}</option>
-                <option value={tags[1]}>{tags[1]}</option>
-                <option value={tags[2]}>{tags[2]}</option>
-              </select>
-            </div>
+  if (isVisible) {
+    return (
+      <div>
+        <h1>Cards Component</h1>
+        {picture.map((photo) => (
+          <div key={photo.id} onClick={(e) => handleImageClick(photo, e)}>
+            <img src={photo.webformatURL} alt="no data available" />
           </div>
-        );
-      })}
-    </div>
-  );
+        ))}
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h1>Cards Component</h1>
+        {picture.map((photo) => {
+          return (
+            <div key={photo.id}>
+              <img src={photo.webformatURL} alt="no data available" />
+              <div className="options">
+                <select>
+                  {inputValues.map((item, index) => {
+                    return (
+                      <option value={item} key={index}>
+                        {item}
+                      </option>
+                    );
+                  })}
+                  <option value={photo.searchWord}>{photo.searchWord}</option>
+                </select>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
 };
 
 export default Cards;

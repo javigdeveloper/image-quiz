@@ -1,23 +1,51 @@
-const Sidebar = ({ preSelected }) => {
+const Sidebar = ({ setPicture, preSelected, setIsVisible, setInputValues }) => {
+  const inputNumber = 3;
+  let inputArr = [];
+  let tempValue = "";
+  let inputNameValues = [];
+  let inputValues = [];
+
+  for (let index = 0; index < inputNumber; index++) {
+    tempValue = "value" + index;
+    inputNameValues.push(tempValue);
+    inputArr.push(<input type="text" name={tempValue} key={index} />);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setPicture(preSelected);
+    setIsVisible(false);
+
+    inputNameValues.forEach((element) => {
+      inputValues.push(e.target[element].value);
+    });
+
+    setInputValues(inputValues);
+    // the following block is probably rerendering!!!!!
+    // inputNameValues.forEach((element) => {
+    //   setInputValues((prevState) => {
+    //     return [...prevState, e.target[element].value];
+    //   });
+    // });
+    // the previous block is probably rerendering!!!!!
+
+    // inputNameValues.forEach((element) => {
+    //   console.log(e.target[element].value);
+    // });
+  };
+
   return (
     <div className="inSideBar">
-      <h1>Selected Pictures</h1>
+      <h1>Selected pictures and text options:</h1>
       {preSelected.map((pic) => {
         return <img src={pic.previewURL} alt="no data available" key={pic.id} />;
       })}
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
-      <button>Go to game</button>
+      <form onSubmit={handleSubmit}>
+        {inputArr.map((el) => el)}
+        <button>Go to game</button>
+      </form>
     </div>
   );
 };
 
 export default Sidebar;
-
-// {preSelected.length > 0 && <img src={preSelected} alt="no data available" />}
