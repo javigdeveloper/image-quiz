@@ -4,12 +4,10 @@ import Sidebar from "./Sidebar";
 import { useState } from "react";
 
 function App() {
-  const [picture, setPicture] = useState([]);
+  const [picture, setPicture] = useState(null);
   const [preSelected, setPreSelected] = useState([]);
   const [isVisible, setIsVisible] = useState(true);
   const [inputValues, setInputValues] = useState([]);
-
-  console.log(inputValues, "from app.js");
 
   return (
     <div className="App">
@@ -19,7 +17,7 @@ function App() {
             <Controls setPicture={setPicture} />
           </div>
         )}
-        <Cards picture={picture} setPreSelected={setPreSelected} isVisible={isVisible} inputValues={inputValues} />
+        {picture && <Cards picture={picture} setPreSelected={setPreSelected} isVisible={isVisible} inputValues={inputValues} />}
       </div>
       {isVisible && (
         <div className="Sidebar">

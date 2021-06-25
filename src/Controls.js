@@ -1,5 +1,3 @@
-// import { useEffect } from "react";
-
 const Controls = ({ setPicture }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -10,10 +8,8 @@ const Controls = ({ setPicture }) => {
       .then((response) => response.json())
       .then((json) => {
         for (const key in json.hits) {
-          const currentObj = json.hits[key];
-          if (currentObj.hasOwnProperty("comments")) {
-            currentObj.searchWord = myValue;
-          }
+          // adding search word value to each picture object:
+          json.hits[key].searchWord = myValue;
         }
 
         setPicture(json.hits);

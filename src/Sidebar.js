@@ -5,6 +5,7 @@ const Sidebar = ({ setPicture, preSelected, setIsVisible, setInputValues }) => {
   let inputNameValues = [];
   let inputValues = [];
 
+  // creating inputs with individual name attribute:
   for (let index = 0; index < inputNumber; index++) {
     tempValue = "value" + index;
     inputNameValues.push(tempValue);
@@ -16,22 +17,11 @@ const Sidebar = ({ setPicture, preSelected, setIsVisible, setInputValues }) => {
     setPicture(preSelected);
     setIsVisible(false);
 
+    // getting alternate answer options from inputs:
     inputNameValues.forEach((element) => {
       inputValues.push(e.target[element].value);
     });
-
     setInputValues(inputValues);
-    // the following block is probably rerendering!!!!!
-    // inputNameValues.forEach((element) => {
-    //   setInputValues((prevState) => {
-    //     return [...prevState, e.target[element].value];
-    //   });
-    // });
-    // the previous block is probably rerendering!!!!!
-
-    // inputNameValues.forEach((element) => {
-    //   console.log(e.target[element].value);
-    // });
   };
 
   return (

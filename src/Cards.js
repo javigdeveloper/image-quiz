@@ -1,7 +1,5 @@
 const Cards = ({ picture, setPreSelected, isVisible, inputValues }) => {
   const handleImageClick = (photo, e) => {
-    // console.log("photo is ", photo, "event is ", e);
-    console.log("clicked photo");
     setPreSelected((prevR) => {
       return [...prevR, photo];
     });
@@ -21,7 +19,6 @@ const Cards = ({ picture, setPreSelected, isVisible, inputValues }) => {
   } else {
     return (
       <div>
-        <h1>Cards Component</h1>
         {picture.map((photo) => {
           return (
             <div key={photo.id}>
