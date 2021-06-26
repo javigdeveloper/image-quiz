@@ -29,6 +29,10 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.inSideBar #inputForm {
+  display: flex;
+  flex-direction: column;
+}
 .inSideBar h1 {
   font-size: 18px;
   text-align: center;
@@ -39,6 +43,24 @@
 .inSideBar input {
   max-width: 120px;
   margin: 5px;
+}
+.inSideBar button {
+  width: 100%;
+  border: 1px solid blue;
+  box-shadow: 2px 2px 5px blue;
+  border-radius: 5px;
+  color: blue;
+  font-size: 16px;
+  padding: 2px;
+}
+.inSideBar #inputAmountForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+#inputAmountForm label {
+  text-align: center;
 }
 .options {
   margin: 20px;

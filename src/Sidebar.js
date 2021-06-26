@@ -1,5 +1,7 @@
+import { useState } from "react";
+
 const Sidebar = ({ setPicture, preSelected, setIsVisible, setInputValues }) => {
-  const inputNumber = 3;
+  const [inputNumber, setInputNumber] = useState(0);
   let inputArr = [];
   let tempValue = "";
   let inputNameValues = [];
@@ -11,6 +13,11 @@ const Sidebar = ({ setPicture, preSelected, setIsVisible, setInputValues }) => {
     inputNameValues.push(tempValue);
     inputArr.push(<input type="text" name={tempValue} key={index} />);
   }
+
+  const handleInputNumberSubmit = (e) => {
+    e.preventDefault();
+    setInputNumber(e.target.fieldNumber.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,10 +37,17 @@ const Sidebar = ({ setPicture, preSelected, setIsVisible, setInputValues }) => {
       {preSelected.map((pic) => {
         return <img src={pic.previewURL} alt="no data available" key={pic.id} />;
       })}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id="inputForm">
         {inputArr.map((el) => el)}
-        <button>Go to game</button>
+        {preSelected.length > 0 && <button>Go to game</button>}
       </form>
+      {inputNumber === 0 && (
+        <form onSubmit={handleInputNumberSubmit} id="inputAmountForm">
+          <label htmlFor="fieldNumber">How many fields do you want?</label>
+          <input type="number" id="fieldNumber" name="fieldNumber" />
+          <button>Create fields</button>
+        </form>
+      )}
     </div>
   );
 };
