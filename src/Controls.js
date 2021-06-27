@@ -11,9 +11,9 @@ const Controls = ({ setPicture }) => {
           // adding search word value to each picture object:
           json.hits[key].searchWord = myValue;
         }
-
         setPicture(json.hits);
       });
+    e.target.inputWord.value = "";
   };
 
   return (

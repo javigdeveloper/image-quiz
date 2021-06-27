@@ -5,7 +5,7 @@ const Sidebar = ({ setPicture, preSelected, setIsVisible, setInputValues }) => {
   let inputArr = [];
   let tempValue = "";
   let inputNameValues = [];
-  let inputValues = [];
+  let inputValuesArr = [];
 
   // creating inputs with individual name attribute:
   for (let index = 0; index < inputNumber; index++) {
@@ -26,9 +26,9 @@ const Sidebar = ({ setPicture, preSelected, setIsVisible, setInputValues }) => {
 
     // getting alternate answer options from inputs:
     inputNameValues.forEach((element) => {
-      inputValues.push(e.target[element].value);
+      inputValuesArr.push(e.target[element].value);
     });
-    setInputValues(inputValues);
+    setInputValues(inputValuesArr);
   };
 
   return (
@@ -44,7 +44,7 @@ const Sidebar = ({ setPicture, preSelected, setIsVisible, setInputValues }) => {
       {inputNumber === 0 && (
         <form onSubmit={handleInputNumberSubmit} id="inputAmountForm">
           <label htmlFor="fieldNumber">How many fields do you want?</label>
-          <input type="number" id="fieldNumber" name="fieldNumber" />
+          <input type="number" id="fieldNumber" name="fieldNumber" min="3" />
           <button>Create fields</button>
         </form>
       )}
