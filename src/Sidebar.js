@@ -31,6 +31,8 @@ const Sidebar = ({ setPicture, preSelected, setIsVisible, setInputValues }) => {
     setInputValues(inputValuesArr);
   };
 
+  // temporary change for git testing!!
+
   return (
     <div className="inSideBar">
       <h1>Selected pictures and text options:</h1>
