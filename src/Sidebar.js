@@ -32,6 +32,7 @@ const Sidebar = ({ setPicture, preSelected, setIsVisible, setInputValues }) => {
   };
 
   // temporary change for git testing!!
+  // extra change for git testing!!
 
   return (
     <div className="inSideBar">
